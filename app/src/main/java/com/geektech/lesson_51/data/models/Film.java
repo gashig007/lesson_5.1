@@ -8,6 +8,12 @@ public class Film {
     @SerializedName("original_title")
     String originalTitle;
     String description;
+    String director;
+    String producer;
+    @SerializedName("release_date")
+    String releaseDate;
+    String image;
+
 
     public String getId() {
         return id;
@@ -23,5 +29,21 @@ public class Film {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public String getProducer() {
+        return producer;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

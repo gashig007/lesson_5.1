@@ -7,6 +7,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface FilmApi {
     @GET("/films")
@@ -14,4 +15,5 @@ public interface FilmApi {
 
     @GET("/films/{id}")
     Call<Film> getFilmDetail(@Path("id") String id);
+
 }
