@@ -39,6 +39,7 @@ public class FilmFragment extends Fragment implements OnClick {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         adapter = new FilmsAdapter();
+        adapter.setOnClick(this);
     }
 
     @Override
@@ -52,7 +53,6 @@ public class FilmFragment extends Fragment implements OnClick {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.recycler.setAdapter(adapter);
-        App.api.getFilmDetail(String.valueOf(getId()));
         App.api.getFilms().enqueue(new Callback<List<Film>>() {
             @Override
             public void onResponse(Call<List<Film>> call, Response<List<Film>> response) {
@@ -80,6 +80,8 @@ public class FilmFragment extends Fragment implements OnClick {
     @Override
     public void onClick(Film film) {
         String id = film.getId();
-        Navigation.findNavController(requireView()).navigate(R.id.nav_graph_xml);
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        Navigation.findNavController(requireView()).navigate(R.id.action_filmFragment_to_filmDetailFragment, bundle);
     }
 }

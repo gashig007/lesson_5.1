@@ -26,9 +26,14 @@ import java.util.List;
 
 public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmViewHolder> {
     private List<Film> films = new ArrayList<>();
+    private OnClick onClick;
     public void setFilms(List<Film> films) {
         this.films = films;
         notifyDataSetChanged();
+    }
+
+    public void setOnClick(OnClick onClick) {
+        this.onClick = onClick;
     }
 
     public List<Film> getFilms() {
@@ -61,7 +66,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmViewHold
         }
 
         public void bind(Film film) {
-            Bundle bundle = new Bundle();
+
             binding.tvTitle.setText(film.getTitle());
             binding.tvDescription.setText(film.getDescription());
             Glide.with(binding.image).load(film.getImage()).into(binding.image);
@@ -69,7 +74,12 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmViewHold
             binding.tvProducer.setText(film.getProducer());
             binding.tvOriginalTitle.setText(film.getOriginalTitle());
             binding.tvReleaseData.setText(film.getReleaseDate());
-            itemView.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_filmFragment_to_filmDetailFragment, bundle));
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onClick.onClick(film);
+                }
+            });
 
         }
     }

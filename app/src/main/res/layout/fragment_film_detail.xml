@@ -3,56 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.film_detali.FilmDetailFragment">
 
-    <ImageView
-        android:id="@+id/image"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        tools:listitem="@layout/item_film"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
-
-    <TextView
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:id="@+id/tv_title"
-        android:textSize="22sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:layout_marginTop="20dp"
-        android:id="@+id/tv_description"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:layout_marginTop="20dp"
-        android:id="@+id/tv_director"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:layout_marginTop="20dp"
-        android:id="@+id/tv_producer"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:layout_marginTop="20dp"
-        android:id="@+id/tv_originalTitle"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:layout_marginTop="20dp"
-        android:id="@+id/tv_releaseData"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_height="match_parent"/>
 </LinearLayout>
