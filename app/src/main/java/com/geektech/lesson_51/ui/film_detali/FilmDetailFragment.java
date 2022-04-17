@@ -28,7 +28,12 @@ import retrofit2.Response;
 public class FilmDetailFragment extends Fragment {
     private FragmentFilmDetailBinding binding;
     private FilmDetailAdapter adapter;
-    Film film = new Film();
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        adapter = new FilmDetailAdapter();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,7 +45,6 @@ public class FilmDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        adapter = new FilmDetailAdapter();
         binding.recycler.setAdapter(adapter);
         Bundle bundle = getArguments();
         String id = bundle.getString("id");
@@ -59,7 +63,10 @@ public class FilmDetailFragment extends Fragment {
 
             @Override
             public void onFailure(Call<Film> call, Throwable t) {
-
+                Snackbar.make(binding.getRoot(), t.getLocalizedMessage(),
+                        BaseTransientBottomBar.LENGTH_LONG)
+                        .setBackgroundTint(Color.RED)
+                        .show();
             }
         });
     }

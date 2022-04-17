@@ -53,7 +53,7 @@ public class FilmDetailAdapter extends RecyclerView.Adapter<FilmDetailAdapter.De
             binding.tvProducer.setText(film.getProducer());
             binding.tvOriginalTitle.setText(film.getOriginalTitle());
             binding.tvReleaseData.setText(film.getReleaseDate());
-            Glide.with(binding.image).load(film.getImage()).into(binding.image);
+            Glide.with(binding.getRoot()).load(film.getImage()).into(binding.image);
         }
     }
 }

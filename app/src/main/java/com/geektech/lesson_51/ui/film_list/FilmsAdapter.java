@@ -66,10 +66,9 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmViewHold
         }
 
         public void bind(Film film) {
-
+            Glide.with(binding.getRoot()).load(film.getImage()).into(binding.image);
             binding.tvTitle.setText(film.getTitle());
             binding.tvDescription.setText(film.getDescription());
-            Glide.with(binding.image).load(film.getImage()).into(binding.image);
             binding.tvDirector.setText(film.getDirector());
             binding.tvProducer.setText(film.getProducer());
             binding.tvOriginalTitle.setText(film.getOriginalTitle());
@@ -80,7 +79,6 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmViewHold
                     onClick.onClick(film);
                 }
             });
-
         }
     }
 }
